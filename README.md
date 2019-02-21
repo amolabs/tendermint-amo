@@ -1,4 +1,6 @@
-# Tendermint
+# Tendermint-amo
+
+Forked for supporting NIST algorithms(P256, SHA3, ...)
 
 [Byzantine-Fault Tolerant](https://en.wikipedia.org/wiki/Byzantine_fault_tolerance)
 [State Machines](https://en.wikipedia.org/wiki/State_machine_replication).
