@@ -9,7 +9,7 @@ PACKAGES=$(shell go list ./...)
 
 INCLUDE = -I=. -I=${GOPATH}/src -I=${GOPATH}/src/github.com/gogo/protobuf/protobuf
 BUILD_TAGS?='tendermint'
-BUILD_FLAGS = -ldflags "-X github.com/tendermint/tendermint/version.GitCommit=`git rev-parse --short=8 HEAD`"
+BUILD_FLAGS = -ldflags "-X github.com/amolabs/tendermint-amo/version.GitCommit=`git rev-parse --short=8 HEAD`"
 
 all: check build test install
 
@@ -105,7 +105,7 @@ get_protoc:
 draw_deps:
 	@# requires brew install graphviz or apt-get install graphviz
 	go get github.com/RobotsAndPencils/goviz
-	@goviz -i github.com/tendermint/tendermint/cmd/tendermint -d 3 | dot -Tpng -o dependency-graph.png
+	@goviz -i github.com/amolabs/tendermint-amo/cmd/tendermint -d 3 | dot -Tpng -o dependency-graph.png
 
 get_deps_bin_size:
 	@# Copy of build recipe with additional flags to perform binary size analysis
@@ -251,7 +251,7 @@ DESTINATION = ./index.html.md
 
 rpc-docs:
 	cat rpc/core/slate_header.txt > $(DESTINATION)
-	godoc2md -template rpc/core/doc_template.txt github.com/tendermint/tendermint/rpc/core | grep -v -e "pipe.go" -e "routes.go" -e "dev.go" | sed 's,/src/target,https://github.com/tendermint/tendermint/tree/master/rpc/core,' >> $(DESTINATION)
+	godoc2md -template rpc/core/doc_template.txt github.com/amolabs/tendermint-amo/rpc/core | grep -v -e "pipe.go" -e "routes.go" -e "dev.go" | sed 's,/src/target,https://github.com/amolabs/tendermint-amo/tree/master/rpc/core,' >> $(DESTINATION)
 
 check_dep:
 	dep status >> /dev/null
@@ -262,7 +262,7 @@ check_dep:
 
 build-docker:
 	cp build/tendermint DOCKER/tendermint
-	docker build --label=tendermint --tag="tendermint/tendermint" DOCKER
+	docker build --label=tendermint --tag="amolabs/tendermint-amo" DOCKER
 	rm -rf DOCKER/tendermint
 
 ###########################################################

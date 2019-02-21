@@ -6,8 +6,8 @@ import (
 
 	"golang.org/x/crypto/nacl/secretbox"
 
-	"github.com/tendermint/tendermint/crypto"
-	cmn "github.com/tendermint/tendermint/libs/common"
+	"github.com/amolabs/tendermint-amo/crypto"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
 )
 
 // TODO, make this into a struct that implements crypto.Symmetric.

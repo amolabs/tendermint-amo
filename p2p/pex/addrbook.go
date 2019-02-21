@@ -13,9 +13,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tendermint/tendermint/crypto"
-	cmn "github.com/tendermint/tendermint/libs/common"
-	"github.com/tendermint/tendermint/p2p"
+	"github.com/amolabs/tendermint-amo/crypto"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	"github.com/amolabs/tendermint-amo/p2p"
 )
 
 const (

@@ -11,7 +11,7 @@ import (
 
 	amino "github.com/tendermint/go-amino"
 
-	tmpubsub "github.com/tendermint/tendermint/libs/pubsub"
+	tmpubsub "github.com/amolabs/tendermint-amo/libs/pubsub"
 )
 
 // a wrapper to emulate a sum type: jsonrpcid = string | int
@@ -244,7 +244,7 @@ type WSRPCConnection interface {
 	Codec() *amino.Codec
 }
 
-// EventSubscriber mirros tendermint/tendermint/types.EventBusSubscriber
+// EventSubscriber mirros amolabs/tendermint-amo/types.EventBusSubscriber
 type EventSubscriber interface {
 	Subscribe(ctx context.Context, subscriber string, query tmpubsub.Query, out chan<- interface{}) error
 	Unsubscribe(ctx context.Context, subscriber string, query tmpubsub.Query) error

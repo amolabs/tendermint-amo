@@ -7,9 +7,9 @@ import (
 	"io/ioutil"
 	"time"
 
-	"github.com/tendermint/tendermint/crypto"
-	cmn "github.com/tendermint/tendermint/libs/common"
-	tmtime "github.com/tendermint/tendermint/types/time"
+	"github.com/amolabs/tendermint-amo/crypto"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	tmtime "github.com/amolabs/tendermint-amo/types/time"
 )
 
 const (

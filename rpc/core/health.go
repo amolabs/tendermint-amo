@@ -1,7 +1,7 @@
 package core
 
 import (
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
+	ctypes "github.com/amolabs/tendermint-amo/rpc/core/types"
 )
 
 // Get node health. Returns empty result (200 OK) on success, no response - in

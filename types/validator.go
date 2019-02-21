@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/tendermint/tendermint/crypto"
-	cmn "github.com/tendermint/tendermint/libs/common"
+	"github.com/amolabs/tendermint-amo/crypto"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
 )
 
 // Volatile state for each Validator

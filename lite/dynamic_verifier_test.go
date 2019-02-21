@@ -8,9 +8,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	dbm "github.com/tendermint/tendermint/libs/db"
-	log "github.com/tendermint/tendermint/libs/log"
-	"github.com/tendermint/tendermint/types"
+	dbm "github.com/amolabs/tendermint-amo/libs/db"
+	log "github.com/amolabs/tendermint-amo/libs/log"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 func TestInquirerValidPath(t *testing.T) {

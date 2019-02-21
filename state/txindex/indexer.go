@@ -3,8 +3,8 @@ package txindex
 import (
 	"errors"
 
-	"github.com/tendermint/tendermint/libs/pubsub/query"
-	"github.com/tendermint/tendermint/types"
+	"github.com/amolabs/tendermint-amo/libs/pubsub/query"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 // TxIndexer interface defines methods to index and search transactions.

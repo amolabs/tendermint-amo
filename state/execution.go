@@ -5,12 +5,12 @@ import (
 	"strings"
 	"time"
 
-	abci "github.com/tendermint/tendermint/abci/types"
-	dbm "github.com/tendermint/tendermint/libs/db"
-	"github.com/tendermint/tendermint/libs/fail"
-	"github.com/tendermint/tendermint/libs/log"
-	"github.com/tendermint/tendermint/proxy"
-	"github.com/tendermint/tendermint/types"
+	abci "github.com/amolabs/tendermint-amo/abci/types"
+	dbm "github.com/amolabs/tendermint-amo/libs/db"
+	"github.com/amolabs/tendermint-amo/libs/fail"
+	"github.com/amolabs/tendermint-amo/libs/log"
+	"github.com/amolabs/tendermint-amo/proxy"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 //-----------------------------------------------------------------------------

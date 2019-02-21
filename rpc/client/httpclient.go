@@ -7,11 +7,11 @@ import (
 	"github.com/pkg/errors"
 
 	amino "github.com/tendermint/go-amino"
-	cmn "github.com/tendermint/tendermint/libs/common"
-	tmpubsub "github.com/tendermint/tendermint/libs/pubsub"
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
-	rpcclient "github.com/tendermint/tendermint/rpc/lib/client"
-	"github.com/tendermint/tendermint/types"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	tmpubsub "github.com/amolabs/tendermint-amo/libs/pubsub"
+	ctypes "github.com/amolabs/tendermint-amo/rpc/core/types"
+	rpcclient "github.com/amolabs/tendermint-amo/rpc/lib/client"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 /*

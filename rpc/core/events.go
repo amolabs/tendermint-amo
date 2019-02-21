@@ -6,10 +6,10 @@ import (
 
 	"github.com/pkg/errors"
 
-	tmquery "github.com/tendermint/tendermint/libs/pubsub/query"
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
-	rpctypes "github.com/tendermint/tendermint/rpc/lib/types"
-	tmtypes "github.com/tendermint/tendermint/types"
+	tmquery "github.com/amolabs/tendermint-amo/libs/pubsub/query"
+	ctypes "github.com/amolabs/tendermint-amo/rpc/core/types"
+	rpctypes "github.com/amolabs/tendermint-amo/rpc/lib/types"
+	tmtypes "github.com/amolabs/tendermint-amo/types"
 )
 
 // Subscribe for events via WebSocket.
@@ -44,14 +44,14 @@ import (
 //		tm.event = 'Tx' AND account.owner CONTAINS 'Igor'
 //
 // See list of all possible events here
-// https://godoc.org/github.com/tendermint/tendermint/types#pkg-constants
+// https://godoc.org/github.com/amolabs/tendermint-amo/types#pkg-constants
 //
 // For complete query syntax, check out
-// https://godoc.org/github.com/tendermint/tendermint/libs/pubsub/query.
+// https://godoc.org/github.com/amolabs/tendermint-amo/libs/pubsub/query.
 //
 // ```go
-// import "github.com/tendermint/tendermint/libs/pubsub/query"
-// import "github.com/tendermint/tendermint/types"
+// import "github.com/amolabs/tendermint-amo/libs/pubsub/query"
+// import "github.com/amolabs/tendermint-amo/types"
 //
 // client := client.NewHTTP("tcp://0.0.0.0:26657", "/websocket")
 // err := client.Start()

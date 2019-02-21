@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	cmn "github.com/tendermint/tendermint/libs/common"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
 )
 
 /* Loading & Saving */

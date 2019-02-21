@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/tendermint/tendermint/crypto/ed25519"
-	cmn "github.com/tendermint/tendermint/libs/common"
+	"github.com/amolabs/tendermint-amo/crypto/ed25519"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
 )
 
 // mockPeer for testing the PeerSet

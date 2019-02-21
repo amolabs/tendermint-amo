@@ -3,8 +3,8 @@ package core_grpc
 import (
 	"context"
 
-	abci "github.com/tendermint/tendermint/abci/types"
-	core "github.com/tendermint/tendermint/rpc/core"
+	abci "github.com/amolabs/tendermint-amo/abci/types"
+	core "github.com/amolabs/tendermint-amo/rpc/core"
 )
 
 type broadcastAPI struct {

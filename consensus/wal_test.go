@@ -12,11 +12,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tendermint/tendermint/consensus/types"
-	"github.com/tendermint/tendermint/libs/autofile"
-	"github.com/tendermint/tendermint/libs/log"
-	tmtypes "github.com/tendermint/tendermint/types"
-	tmtime "github.com/tendermint/tendermint/types/time"
+	"github.com/amolabs/tendermint-amo/consensus/types"
+	"github.com/amolabs/tendermint-amo/libs/autofile"
+	"github.com/amolabs/tendermint-amo/libs/log"
+	tmtypes "github.com/amolabs/tendermint-amo/types"
+	tmtime "github.com/amolabs/tendermint-amo/types/time"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

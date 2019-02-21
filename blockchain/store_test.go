@@ -10,15 +10,15 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	cfg "github.com/tendermint/tendermint/config"
-	cmn "github.com/tendermint/tendermint/libs/common"
-	"github.com/tendermint/tendermint/libs/db"
-	dbm "github.com/tendermint/tendermint/libs/db"
-	"github.com/tendermint/tendermint/libs/log"
-	sm "github.com/tendermint/tendermint/state"
+	cfg "github.com/amolabs/tendermint-amo/config"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	"github.com/amolabs/tendermint-amo/libs/db"
+	dbm "github.com/amolabs/tendermint-amo/libs/db"
+	"github.com/amolabs/tendermint-amo/libs/log"
+	sm "github.com/amolabs/tendermint-amo/state"
 
-	"github.com/tendermint/tendermint/types"
-	tmtime "github.com/tendermint/tendermint/types/time"
+	"github.com/amolabs/tendermint-amo/types"
+	tmtime "github.com/amolabs/tendermint-amo/types/time"
 )
 
 // make a Commit with a single vote containing just the height and a timestamp

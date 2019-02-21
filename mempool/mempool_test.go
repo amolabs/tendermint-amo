@@ -15,14 +15,14 @@ import (
 
 	"github.com/stretchr/testify/require"
 	amino "github.com/tendermint/go-amino"
-	"github.com/tendermint/tendermint/abci/example/counter"
-	"github.com/tendermint/tendermint/abci/example/kvstore"
-	abci "github.com/tendermint/tendermint/abci/types"
-	cfg "github.com/tendermint/tendermint/config"
-	cmn "github.com/tendermint/tendermint/libs/common"
-	"github.com/tendermint/tendermint/libs/log"
-	"github.com/tendermint/tendermint/proxy"
-	"github.com/tendermint/tendermint/types"
+	"github.com/amolabs/tendermint-amo/abci/example/counter"
+	"github.com/amolabs/tendermint-amo/abci/example/kvstore"
+	abci "github.com/amolabs/tendermint-amo/abci/types"
+	cfg "github.com/amolabs/tendermint-amo/config"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	"github.com/amolabs/tendermint-amo/libs/log"
+	"github.com/amolabs/tendermint-amo/proxy"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 func newMempoolWithApp(cc proxy.ClientCreator) *Mempool {

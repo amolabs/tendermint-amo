@@ -17,11 +17,11 @@ want to directly call a tendermint node in process, you can use the
 import (
 	"reflect"
 
-	cmn "github.com/tendermint/tendermint/libs/common"
-	"github.com/tendermint/tendermint/rpc/client"
-	"github.com/tendermint/tendermint/rpc/core"
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
-	"github.com/tendermint/tendermint/types"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	"github.com/amolabs/tendermint-amo/rpc/client"
+	"github.com/amolabs/tendermint-amo/rpc/core"
+	ctypes "github.com/amolabs/tendermint-amo/rpc/core/types"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 // Client wraps arbitrary implementations of the various interfaces.

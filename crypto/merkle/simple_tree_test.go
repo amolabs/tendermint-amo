@@ -5,10 +5,10 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	cmn "github.com/tendermint/tendermint/libs/common"
-	. "github.com/tendermint/tendermint/libs/test"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	. "github.com/amolabs/tendermint-amo/libs/test"
 
-	"github.com/tendermint/tendermint/crypto/tmhash"
+	"github.com/amolabs/tendermint-amo/crypto/tmhash"
 )
 
 type testItem []byte

@@ -8,12 +8,12 @@ package client
 import (
 	"fmt"
 
-	log "github.com/tendermint/tendermint/libs/log"
-	"github.com/tendermint/tendermint/lite"
-	lerr "github.com/tendermint/tendermint/lite/errors"
-	rpcclient "github.com/tendermint/tendermint/rpc/client"
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
-	"github.com/tendermint/tendermint/types"
+	log "github.com/amolabs/tendermint-amo/libs/log"
+	"github.com/amolabs/tendermint-amo/lite"
+	lerr "github.com/amolabs/tendermint-amo/lite/errors"
+	rpcclient "github.com/amolabs/tendermint-amo/rpc/client"
+	ctypes "github.com/amolabs/tendermint-amo/rpc/core/types"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 // SignStatusClient combines a SignClient and StatusClient.

@@ -1,7 +1,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: /go/src/github.com/tendermint/tendermint
+  working_directory: /go/src/github.com/amolabs/tendermint-amo
   docker:
     - image: circleci/golang:1.11.4
   environment:
@@ -51,7 +51,7 @@ jobs:
       - save_cache:
           key: v3-tree-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-            - /go/src/github.com/tendermint/tendermint
+            - /go/src/github.com/amolabs/tendermint-amo
 
   build_slate:
     <<: *defaults
@@ -107,7 +107,7 @@ jobs:
             bash abci/tests/test_app/test.sh
 
 # if this test fails, fix it and update the docs at:
-# https://github.com/tendermint/tendermint/blob/develop/docs/abci-cli.md
+# https://github.com/amolabs/tendermint-amo/blob/develop/docs/abci-cli.md
   test_abci_cli:
     <<: *defaults
     steps:
@@ -151,7 +151,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            for pkg in $(go list github.com/tendermint/tendermint/... | circleci tests split --split-by=timings); do
+            for pkg in $(go list github.com/amolabs/tendermint-amo/... | circleci tests split --split-by=timings); do
               id=$(basename "$pkg")
 
               GOCACHE=off go test -v -timeout 5m -race -coverprofile=/tmp/workspace/profiles/$id.out -covermode=atomic "$pkg" | tee "/tmp/logs/$id-$RANDOM.log"
@@ -177,7 +177,7 @@ jobs:
           command: bash test/persist/test_failure_indices.sh
 
   localnet:
-      working_directory: /home/circleci/.go_workspace/src/github.com/tendermint/tendermint
+      working_directory: /home/circleci/.go_workspace/src/github.com/amolabs/tendermint-amo
       machine:
         image: circleci/classic:latest
       environment:
@@ -192,7 +192,7 @@ jobs:
             name: run localnet and exit on failure
             command: |
               set -x
-              docker run --rm -v "$PWD":/go/src/github.com/tendermint/tendermint -w /go/src/github.com/tendermint/tendermint golang:1.11.4 make build-linux
+              docker run --rm -v "$PWD":/go/src/github.com/amolabs/tendermint-amo -w /go/src/github.com/amolabs/tendermint-amo golang:1.11.4 make build-linux
               make localnet-start &
               ./scripts/localnet-blocks-test.sh 40 5 10 localhost
 
@@ -205,7 +205,7 @@ jobs:
     steps:
       - checkout
       - run: mkdir -p $GOPATH/src/github.com/tendermint
-      - run: ln -sf /home/circleci/project $GOPATH/src/github.com/tendermint/tendermint
+      - run: ln -sf /home/circleci/project $GOPATH/src/github.com/amolabs/tendermint-amo
       - run: bash test/p2p/circleci.sh
       - store_artifacts:
           path: /home/circleci/project/test/p2p/logs

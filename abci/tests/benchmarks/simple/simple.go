@@ -7,8 +7,8 @@ import (
 	"net"
 	"reflect"
 
-	"github.com/tendermint/tendermint/abci/types"
-	cmn "github.com/tendermint/tendermint/libs/common"
+	"github.com/amolabs/tendermint-amo/abci/types"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
 )
 
 func main() {

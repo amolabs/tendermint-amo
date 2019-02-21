@@ -10,12 +10,12 @@ import (
 	"time"
 
 	"github.com/pkg/errors"
-	cmn "github.com/tendermint/tendermint/libs/common"
-	dbm "github.com/tendermint/tendermint/libs/db"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	dbm "github.com/amolabs/tendermint-amo/libs/db"
 
-	"github.com/tendermint/tendermint/libs/pubsub/query"
-	"github.com/tendermint/tendermint/state/txindex"
-	"github.com/tendermint/tendermint/types"
+	"github.com/amolabs/tendermint-amo/libs/pubsub/query"
+	"github.com/amolabs/tendermint-amo/state/txindex"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 const (

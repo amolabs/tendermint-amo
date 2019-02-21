@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	cmn "github.com/tendermint/tendermint/libs/common"
-	"github.com/tendermint/tendermint/libs/log"
-	tmpubsub "github.com/tendermint/tendermint/libs/pubsub"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	"github.com/amolabs/tendermint-amo/libs/log"
+	tmpubsub "github.com/amolabs/tendermint-amo/libs/pubsub"
 )
 
 const defaultCapacity = 0

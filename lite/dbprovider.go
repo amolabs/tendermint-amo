@@ -6,11 +6,11 @@ import (
 	"strconv"
 
 	amino "github.com/tendermint/go-amino"
-	cryptoAmino "github.com/tendermint/tendermint/crypto/encoding/amino"
-	dbm "github.com/tendermint/tendermint/libs/db"
-	log "github.com/tendermint/tendermint/libs/log"
-	lerr "github.com/tendermint/tendermint/lite/errors"
-	"github.com/tendermint/tendermint/types"
+	cryptoAmino "github.com/amolabs/tendermint-amo/crypto/encoding/amino"
+	dbm "github.com/amolabs/tendermint-amo/libs/db"
+	log "github.com/amolabs/tendermint-amo/libs/log"
+	lerr "github.com/amolabs/tendermint-amo/lite/errors"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 var _ PersistentProvider = (*DBProvider)(nil)

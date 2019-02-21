@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	cmn "github.com/tendermint/tendermint/libs/common"
-	dbm "github.com/tendermint/tendermint/libs/db"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	dbm "github.com/amolabs/tendermint-amo/libs/db"
 )
 
 const defaultStorePeriodicSaveInterval = 1 * time.Minute

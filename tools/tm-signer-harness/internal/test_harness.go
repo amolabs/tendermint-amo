@@ -7,15 +7,15 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/tendermint/tendermint/crypto/tmhash"
+	"github.com/amolabs/tendermint-amo/crypto/tmhash"
 
-	"github.com/tendermint/tendermint/crypto/ed25519"
-	"github.com/tendermint/tendermint/privval"
-	"github.com/tendermint/tendermint/state"
+	"github.com/amolabs/tendermint-amo/crypto/ed25519"
+	"github.com/amolabs/tendermint-amo/privval"
+	"github.com/amolabs/tendermint-amo/state"
 
-	cmn "github.com/tendermint/tendermint/libs/common"
-	"github.com/tendermint/tendermint/libs/log"
-	"github.com/tendermint/tendermint/types"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	"github.com/amolabs/tendermint-amo/libs/log"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 // Test harness error codes (which act as exit codes when the test harness fails).

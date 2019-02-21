@@ -4,12 +4,12 @@ import (
 	"net/http"
 
 	amino "github.com/tendermint/go-amino"
-	"github.com/tendermint/tendermint/libs/log"
+	"github.com/amolabs/tendermint-amo/libs/log"
 
-	rpcclient "github.com/tendermint/tendermint/rpc/client"
-	"github.com/tendermint/tendermint/rpc/core"
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
-	rpcserver "github.com/tendermint/tendermint/rpc/lib/server"
+	rpcclient "github.com/amolabs/tendermint-amo/rpc/client"
+	"github.com/amolabs/tendermint-amo/rpc/core"
+	ctypes "github.com/amolabs/tendermint-amo/rpc/core/types"
+	rpcserver "github.com/amolabs/tendermint-amo/rpc/lib/server"
 )
 
 const (

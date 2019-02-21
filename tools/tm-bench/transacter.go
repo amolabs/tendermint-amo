@@ -17,13 +17,13 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
 
-	"github.com/tendermint/tendermint/libs/log"
-	rpctypes "github.com/tendermint/tendermint/rpc/lib/types"
+	"github.com/amolabs/tendermint-amo/libs/log"
+	rpctypes "github.com/amolabs/tendermint-amo/rpc/lib/types"
 )
 
 const (
 	sendTimeout = 10 * time.Second
-	// see https://github.com/tendermint/tendermint/blob/master/rpc/lib/server/handlers.go
+	// see https://github.com/amolabs/tendermint-amo/blob/master/rpc/lib/server/handlers.go
 	pingPeriod = (30 * 9 / 10) * time.Second
 )
 

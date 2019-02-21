@@ -5,13 +5,13 @@ import (
 	"net"
 	"time"
 
-	abci "github.com/tendermint/tendermint/abci/types"
-	"github.com/tendermint/tendermint/crypto"
-	cmn "github.com/tendermint/tendermint/libs/common"
+	abci "github.com/amolabs/tendermint-amo/abci/types"
+	"github.com/amolabs/tendermint-amo/crypto"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
 
-	"github.com/tendermint/tendermint/p2p"
-	"github.com/tendermint/tendermint/state"
-	"github.com/tendermint/tendermint/types"
+	"github.com/amolabs/tendermint-amo/p2p"
+	"github.com/amolabs/tendermint-amo/state"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 // List of blocks

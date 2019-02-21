@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	cmn "github.com/tendermint/tendermint/libs/common"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
 )
 
 //---------------------------------------------------------------------------------------

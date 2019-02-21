@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	cmn "github.com/tendermint/tendermint/libs/common"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
 )
 
 func TestLoadOrGenNodeKey(t *testing.T) {

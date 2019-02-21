@@ -14,17 +14,17 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	abcicli "github.com/tendermint/tendermint/abci/client"
-	"github.com/tendermint/tendermint/abci/example/kvstore"
-	abci "github.com/tendermint/tendermint/abci/types"
-	bc "github.com/tendermint/tendermint/blockchain"
-	cfg "github.com/tendermint/tendermint/config"
-	dbm "github.com/tendermint/tendermint/libs/db"
-	"github.com/tendermint/tendermint/libs/log"
-	mempl "github.com/tendermint/tendermint/mempool"
-	"github.com/tendermint/tendermint/p2p"
-	sm "github.com/tendermint/tendermint/state"
-	"github.com/tendermint/tendermint/types"
+	abcicli "github.com/amolabs/tendermint-amo/abci/client"
+	"github.com/amolabs/tendermint-amo/abci/example/kvstore"
+	abci "github.com/amolabs/tendermint-amo/abci/types"
+	bc "github.com/amolabs/tendermint-amo/blockchain"
+	cfg "github.com/amolabs/tendermint-amo/config"
+	dbm "github.com/amolabs/tendermint-amo/libs/db"
+	"github.com/amolabs/tendermint-amo/libs/log"
+	mempl "github.com/amolabs/tendermint-amo/mempool"
+	"github.com/amolabs/tendermint-amo/p2p"
+	sm "github.com/amolabs/tendermint-amo/state"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 func init() {

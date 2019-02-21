@@ -12,8 +12,8 @@ import (
 
 	"github.com/go-kit/kit/log/term"
 
-	"github.com/tendermint/tendermint/libs/log"
-	tmrpc "github.com/tendermint/tendermint/rpc/client"
+	"github.com/amolabs/tendermint-amo/libs/log"
+	tmrpc "github.com/amolabs/tendermint-amo/rpc/client"
 )
 
 var logger = log.NewNopLogger()

@@ -10,10 +10,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/tendermint/tendermint/crypto"
-	"github.com/tendermint/tendermint/crypto/ed25519"
-	cmn "github.com/tendermint/tendermint/libs/common"
-	tmtime "github.com/tendermint/tendermint/types/time"
+	"github.com/amolabs/tendermint-amo/crypto"
+	"github.com/amolabs/tendermint-amo/crypto/ed25519"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	tmtime "github.com/amolabs/tendermint-amo/types/time"
 )
 
 func TestValidatorSetBasic(t *testing.T) {

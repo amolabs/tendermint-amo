@@ -3,12 +3,12 @@ package client
 import (
 	"context"
 
-	cmn "github.com/tendermint/tendermint/libs/common"
-	tmpubsub "github.com/tendermint/tendermint/libs/pubsub"
-	nm "github.com/tendermint/tendermint/node"
-	"github.com/tendermint/tendermint/rpc/core"
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
-	"github.com/tendermint/tendermint/types"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	tmpubsub "github.com/amolabs/tendermint-amo/libs/pubsub"
+	nm "github.com/amolabs/tendermint-amo/node"
+	"github.com/amolabs/tendermint-amo/rpc/core"
+	ctypes "github.com/amolabs/tendermint-amo/rpc/core/types"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 /*

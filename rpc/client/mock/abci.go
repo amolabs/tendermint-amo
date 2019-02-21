@@ -1,12 +1,12 @@
 package mock
 
 import (
-	abci "github.com/tendermint/tendermint/abci/types"
-	cmn "github.com/tendermint/tendermint/libs/common"
-	"github.com/tendermint/tendermint/proxy"
-	"github.com/tendermint/tendermint/rpc/client"
-	ctypes "github.com/tendermint/tendermint/rpc/core/types"
-	"github.com/tendermint/tendermint/types"
+	abci "github.com/amolabs/tendermint-amo/abci/types"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
+	"github.com/amolabs/tendermint-amo/proxy"
+	"github.com/amolabs/tendermint-amo/rpc/client"
+	ctypes "github.com/amolabs/tendermint-amo/rpc/core/types"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 // ABCIApp will send all abci related request to the named app,

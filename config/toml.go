@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"text/template"
 
-	cmn "github.com/tendermint/tendermint/libs/common"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
 )
 
 var configTemplate *template.Template

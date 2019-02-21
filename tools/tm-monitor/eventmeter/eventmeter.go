@@ -10,9 +10,9 @@ import (
 
 	metrics "github.com/rcrowley/go-metrics"
 
-	"github.com/tendermint/tendermint/libs/events"
-	"github.com/tendermint/tendermint/libs/log"
-	client "github.com/tendermint/tendermint/rpc/lib/client"
+	"github.com/amolabs/tendermint-amo/libs/events"
+	"github.com/amolabs/tendermint-amo/libs/log"
+	client "github.com/amolabs/tendermint-amo/rpc/lib/client"
 )
 
 const (

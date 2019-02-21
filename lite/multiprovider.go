@@ -1,9 +1,9 @@
 package lite
 
 import (
-	log "github.com/tendermint/tendermint/libs/log"
-	lerr "github.com/tendermint/tendermint/lite/errors"
-	"github.com/tendermint/tendermint/types"
+	log "github.com/amolabs/tendermint-amo/libs/log"
+	lerr "github.com/amolabs/tendermint-amo/lite/errors"
+	"github.com/amolabs/tendermint-amo/types"
 )
 
 var _ PersistentProvider = (*multiProvider)(nil)

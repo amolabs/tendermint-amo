@@ -651,7 +651,7 @@ func TestConsensusConfig() *ConsensusConfig {
 }
 
 // MinValidVoteTime returns the minimum acceptable block time.
-// See the [BFT time spec](https://godoc.org/github.com/tendermint/tendermint/docs/spec/consensus/bft-time.md).
+// See the [BFT time spec](https://godoc.org/github.com/amolabs/tendermint-amo/docs/spec/consensus/bft-time.md).
 func (cfg *ConsensusConfig) MinValidVoteTime(lastBlockTime time.Time) time.Time {
 	return lastBlockTime.Add(cfg.BlockTimeIota)
 }
