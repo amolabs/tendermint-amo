@@ -1,14 +1,14 @@
 package cryptoAmino
 
 import (
-	"github.com/amolabs/tendermint-amo/crypto/p256"
 	"reflect"
 
-	amino "github.com/tendermint/go-amino"
 	"github.com/amolabs/tendermint-amo/crypto"
 	"github.com/amolabs/tendermint-amo/crypto/ed25519"
 	"github.com/amolabs/tendermint-amo/crypto/multisig"
+	"github.com/amolabs/tendermint-amo/crypto/p256"
 	"github.com/amolabs/tendermint-amo/crypto/secp256k1"
+	amino "github.com/tendermint/go-amino"
 )
 
 var cdc = amino.NewCodec()
