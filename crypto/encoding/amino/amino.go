@@ -1,6 +1,7 @@
 package cryptoAmino
 
 import (
+	"github.com/amolabs/tendermint-amo/crypto/p256"
 	"reflect"
 
 	amino "github.com/tendermint/go-amino"
@@ -58,6 +59,7 @@ func RegisterAmino(cdc *amino.Codec) {
 		ed25519.PrivKeyAminoName, nil)
 	cdc.RegisterConcrete(secp256k1.PrivKeySecp256k1{},
 		secp256k1.PrivKeyAminoName, nil)
+	p256.RegisterAmino(cdc)
 }
 
 func PrivKeyFromBytes(privKeyBytes []byte) (privKey crypto.PrivKey, err error) {
