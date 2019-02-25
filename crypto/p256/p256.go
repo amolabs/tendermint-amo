@@ -6,7 +6,6 @@ import (
 	"crypto/elliptic"
 	"encoding/hex"
 	tmc "github.com/amolabs/tendermint-amo/crypto"
-	"github.com/amolabs/tendermint-amo/crypto/tmhash"
 	"github.com/tendermint/go-amino"
 	"io"
 	"math/big"
@@ -22,7 +21,7 @@ var (
 
 const (
 	PrivKeyAminoName = "amo/PrivKeyP256"
-	PubKeyAminoName = "amo/PubKeyP256"
+	PubKeyAminoName  = "amo/PubKeyP256"
 )
 
 func RegisterAmino(cdc *amino.Codec) {
@@ -61,14 +60,14 @@ func (privKey PrivKeyP256) ToECDSA() *ecdsa.PrivateKey {
 		D: new(big.Int).SetBytes(privKey[:]),
 		PublicKey: ecdsa.PublicKey{
 			Curve: c,
-			X: X,
-			Y: Y,
+			X:     X,
+			Y:     Y,
 		},
 	}
 }
 
 func (privKey PrivKeyP256) Sign(msg []byte) ([]byte, error) {
-	priv :=  privKey.ToECDSA()
+	priv := privKey.ToECDSA()
 	r, s, err := ecdsa.Sign(tmc.CReader(), priv, h(msg))
 	if err != nil {
 		return nil, err
@@ -103,7 +102,7 @@ func (privKey PrivKeyP256) String() string {
 }
 
 func (pubKey PubKeyP256) Address() tmc.Address {
-	return tmc.Address(tmhash.SumTruncated(pubKey[:]))
+	return GenTestNetAddress(pubKey)
 }
 
 func (pubKey PubKeyP256) Bytes() []byte {
@@ -113,8 +112,8 @@ func (pubKey PubKeyP256) Bytes() []byte {
 func (pubKey PubKeyP256) ToECDSA() *ecdsa.PublicKey {
 	return &ecdsa.PublicKey{
 		Curve: c,
-		X: new(big.Int).SetBytes(pubKey[1:33]),
-		Y: new(big.Int).SetBytes(pubKey[33:]),
+		X:     new(big.Int).SetBytes(pubKey[1:33]),
+		Y:     new(big.Int).SetBytes(pubKey[33:]),
 	}
 }
 

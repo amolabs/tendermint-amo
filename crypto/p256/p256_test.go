@@ -21,3 +21,8 @@ func TestGenPrivKey(t *testing.T) {
 	}
 	r.True(pubKey.VerifyBytes(msg, sig))
 }
+
+func TestGenTestNetAddress(t *testing.T) {
+	privKey := GenPrivKey()
+	t.Log(string(privKey.PubKey().Address()))
+}
