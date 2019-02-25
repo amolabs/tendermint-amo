@@ -7,7 +7,6 @@ import (
 	"encoding/hex"
 	tmc "github.com/amolabs/tendermint-amo/crypto"
 	"github.com/amolabs/tendermint-amo/crypto/tmhash"
-	"github.com/tendermint/go-amino"
 	"io"
 	"math/big"
 )
@@ -22,13 +21,8 @@ var (
 
 const (
 	PrivKeyAminoName = "amo/PrivKeyP256"
-	PubKeyAminoName = "amo/PubKeyP256"
+	PubKeyAminoName  = "amo/PubKeyP256"
 )
-
-func RegisterAmino(cdc *amino.Codec) {
-	cdc.RegisterConcrete(PrivKeyP256{}, PrivKeyAminoName, nil)
-	cdc.RegisterConcrete(PubKeyP256{}, PubKeyAminoName, nil)
-}
 
 func GenPrivKeyFromSecret(secret []byte) PrivKeyP256 {
 	privKey32 := h(secret)

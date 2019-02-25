@@ -8,6 +8,7 @@ import (
 	abci "github.com/amolabs/tendermint-amo/abci/types"
 	"github.com/amolabs/tendermint-amo/crypto"
 	"github.com/amolabs/tendermint-amo/crypto/ed25519"
+	"github.com/amolabs/tendermint-amo/crypto/p256"
 	"github.com/amolabs/tendermint-amo/crypto/secp256k1"
 )
 
@@ -22,6 +23,7 @@ const (
 const (
 	ABCIPubKeyTypeEd25519   = "ed25519"
 	ABCIPubKeyTypeSecp256k1 = "secp256k1"
+	ABCIPubKeyTypeP256      = "p256"
 )
 
 // TODO: Make non-global by allowing for registration of more pubkey types
@@ -107,6 +109,11 @@ func (tm2pb) PubKey(pubKey crypto.PubKey) abci.PubKey {
 	case secp256k1.PubKeySecp256k1:
 		return abci.PubKey{
 			Type: ABCIPubKeyTypeSecp256k1,
+			Data: pk[:],
+		}
+	case p256.PubKeyP256:
+		return abci.PubKey{
+			Type: ABCIPubKeyTypeP256,
 			Data: pk[:],
 		}
 	default:
