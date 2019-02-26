@@ -1,15 +1,16 @@
 package cryptoAmino
 
 import (
+	"github.com/amolabs/tendermint-amo/crypto/p256"
 	"os"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"github.com/amolabs/tendermint-amo/crypto"
 	"github.com/amolabs/tendermint-amo/crypto/ed25519"
 	"github.com/amolabs/tendermint-amo/crypto/multisig"
 	"github.com/amolabs/tendermint-amo/crypto/secp256k1"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 type byter interface {
@@ -77,6 +78,12 @@ func TestKeyEncodings(t *testing.T) {
 			pubSize:  38,
 			sigSize:  65,
 		},
+		{
+			privKey:  p256.GenPrivKey(),
+			privSize: 37,
+			pubSize:  70,
+			sigSize:  65,
+		},
 	}
 
 	for tcIndex, tc := range cases {
@@ -138,6 +145,7 @@ func TestPubkeyAminoName(t *testing.T) {
 		{ed25519.PubKeyEd25519{}, ed25519.PubKeyAminoName, true},
 		{secp256k1.PubKeySecp256k1{}, secp256k1.PubKeyAminoName, true},
 		{multisig.PubKeyMultisigThreshold{}, multisig.PubKeyMultisigThresholdAminoRoute, true},
+		{p256.PubKeyP256{}, p256.PubKeyAminoName, true},
 	}
 	for i, tc := range tests {
 		got, found := PubkeyAminoName(cdc, tc.key)

@@ -118,7 +118,7 @@ func (pubKey PubKeyP256) Address() tmc.Address {
 }
 
 func (pubKey PubKeyP256) Bytes() []byte {
-	return pubKey[:]
+	return cdc.MustMarshalBinaryBare(pubKey)
 }
 
 func (pubKey PubKeyP256) ToECDSA() *ecdsa.PublicKey {
