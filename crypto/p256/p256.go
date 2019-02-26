@@ -12,18 +12,29 @@ import (
 	"math/big"
 )
 
-type PrivKeyP256 [32]byte
-type PubKeyP256 [65]byte
-
 var (
 	c = elliptic.P256()
 	h = tmc.Sha256
 )
 
+var cdc = amino.NewCodec()
+
 const (
 	PrivKeyAminoName = "amo/PrivKeyP256"
 	PubKeyAminoName = "amo/PubKeyP256"
+	SignatureSize = 64
+	PribKeyP256Size = 32
+	PubKeyP256Size = 65
 )
+
+type PrivKeyP256 [PribKeyP256Size]byte
+type PubKeyP256 [PubKeyP256Size]byte
+
+func init() {
+	cdc.RegisterInterface((*tmc.PubKey)(nil), nil)
+	cdc.RegisterInterface((*tmc.PrivKey)(nil), nil)
+	RegisterAmino(cdc)
+}
 
 func RegisterAmino(cdc *amino.Codec) {
 	cdc.RegisterConcrete(PrivKeyP256{}, PrivKeyAminoName, nil)
@@ -52,7 +63,7 @@ func genPrivKey(rand io.Reader) PrivKeyP256 {
 }
 
 func (privKey PrivKeyP256) Bytes() []byte {
-	return privKey[:]
+	return cdc.MustMarshalBinaryBare(privKey)
 }
 
 func (privKey PrivKeyP256) ToECDSA() *ecdsa.PrivateKey {
