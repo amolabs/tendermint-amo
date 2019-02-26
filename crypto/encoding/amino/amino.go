@@ -33,6 +33,7 @@ func init() {
 	nameTable[reflect.TypeOf(ed25519.PubKeyEd25519{})] = ed25519.PubKeyAminoName
 	nameTable[reflect.TypeOf(secp256k1.PubKeySecp256k1{})] = secp256k1.PubKeyAminoName
 	nameTable[reflect.TypeOf(multisig.PubKeyMultisigThreshold{})] = multisig.PubKeyMultisigThresholdAminoRoute
+	nameTable[reflect.TypeOf(p256.PubKeyP256{})] = p256.PubKeyAminoName
 }
 
 // PubkeyAminoName returns the amino route of a pubkey
