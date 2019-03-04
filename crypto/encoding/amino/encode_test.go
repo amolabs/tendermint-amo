@@ -4,12 +4,13 @@ import (
 	"os"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"github.com/amolabs/tendermint-amo/crypto"
 	"github.com/amolabs/tendermint-amo/crypto/ed25519"
 	"github.com/amolabs/tendermint-amo/crypto/multisig"
+	"github.com/amolabs/tendermint-amo/crypto/p256"
 	"github.com/amolabs/tendermint-amo/crypto/secp256k1"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 type byter interface {
@@ -54,8 +55,10 @@ func ExamplePrintRegisteredTypes() {
 	//| PubKeyEd25519 | tendermint/PubKeyEd25519 | 0x1624DE64 | 0x20 |  |
 	//| PubKeySecp256k1 | tendermint/PubKeySecp256k1 | 0xEB5AE987 | 0x21 |  |
 	//| PubKeyMultisigThreshold | tendermint/PubKeyMultisigThreshold | 0x22C1F7E2 | variable |  |
+	//| PubKeyP256 | amo/PubKeyP256 | 0x496DC48E | 0x41 |  |
 	//| PrivKeyEd25519 | tendermint/PrivKeyEd25519 | 0xA3288910 | 0x40 |  |
 	//| PrivKeySecp256k1 | tendermint/PrivKeySecp256k1 | 0xE1B0F79B | 0x20 |  |
+	//| PrivKeyP256 | amo/PrivKeyP256 | 0xC8ACEE31 | 0x20 |  |
 }
 
 func TestKeyEncodings(t *testing.T) {
@@ -73,6 +76,12 @@ func TestKeyEncodings(t *testing.T) {
 			privKey:  secp256k1.GenPrivKey(),
 			privSize: 37,
 			pubSize:  38,
+			sigSize:  65,
+		},
+		{
+			privKey:  p256.GenPrivKey(),
+			privSize: 37,
+			pubSize:  70,
 			sigSize:  65,
 		},
 	}
@@ -136,6 +145,7 @@ func TestPubkeyAminoName(t *testing.T) {
 		{ed25519.PubKeyEd25519{}, ed25519.PubKeyAminoName, true},
 		{secp256k1.PubKeySecp256k1{}, secp256k1.PubKeyAminoName, true},
 		{multisig.PubKeyMultisigThreshold{}, multisig.PubKeyMultisigThresholdAminoRoute, true},
+		{p256.PubKeyP256{}, p256.PubKeyAminoName, true},
 	}
 	for i, tc := range tests {
 		got, found := PubkeyAminoName(cdc, tc.key)

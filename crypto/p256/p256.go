@@ -5,24 +5,42 @@ import (
 	"crypto/ecdsa"
 	"crypto/elliptic"
 	"encoding/hex"
-	tmc "github.com/amolabs/tendermint-amo/crypto"
-	"github.com/amolabs/tendermint-amo/crypto/tmhash"
 	"io"
 	"math/big"
-)
 
-type PrivKeyP256 [32]byte
-type PubKeyP256 [65]byte
+	amino "github.com/tendermint/go-amino"
+
+	tmc "github.com/amolabs/tendermint-amo/crypto"
+	"github.com/amolabs/tendermint-amo/crypto/tmhash"
+)
 
 var (
 	c = elliptic.P256()
 	h = tmc.Sha256
 )
 
+var cdc = amino.NewCodec()
+
 const (
 	PrivKeyAminoName = "amo/PrivKeyP256"
 	PubKeyAminoName  = "amo/PubKeyP256"
+	SignatureSize    = 64
+	PrivKeyP256Size  = 32
+	PubKeyP256Size   = 65
 )
+
+type PrivKeyP256 [PrivKeyP256Size]byte
+type PubKeyP256 [PubKeyP256Size]byte
+
+func init() {
+	cdc.RegisterInterface((*tmc.PubKey)(nil), nil)
+	cdc.RegisterConcrete(PubKeyP256{},
+		PubKeyAminoName, nil)
+
+	cdc.RegisterInterface((*tmc.PrivKey)(nil), nil)
+	cdc.RegisterConcrete(PrivKeyP256{},
+		PrivKeyAminoName, nil)
+}
 
 func GenPrivKeyFromSecret(secret []byte) PrivKeyP256 {
 	privKey32 := h(secret)
@@ -46,7 +64,7 @@ func genPrivKey(rand io.Reader) PrivKeyP256 {
 }
 
 func (privKey PrivKeyP256) Bytes() []byte {
-	return privKey[:]
+	return cdc.MustMarshalBinaryBare(privKey)
 }
 
 func (privKey PrivKeyP256) ToECDSA() *ecdsa.PrivateKey {
@@ -55,14 +73,14 @@ func (privKey PrivKeyP256) ToECDSA() *ecdsa.PrivateKey {
 		D: new(big.Int).SetBytes(privKey[:]),
 		PublicKey: ecdsa.PublicKey{
 			Curve: c,
-			X: X,
-			Y: Y,
+			X:     X,
+			Y:     Y,
 		},
 	}
 }
 
 func (privKey PrivKeyP256) Sign(msg []byte) ([]byte, error) {
-	priv :=  privKey.ToECDSA()
+	priv := privKey.ToECDSA()
 	r, s, err := ecdsa.Sign(tmc.CReader(), priv, h(msg))
 	if err != nil {
 		return nil, err
@@ -101,14 +119,14 @@ func (pubKey PubKeyP256) Address() tmc.Address {
 }
 
 func (pubKey PubKeyP256) Bytes() []byte {
-	return pubKey[:]
+	return cdc.MustMarshalBinaryBare(pubKey)
 }
 
 func (pubKey PubKeyP256) ToECDSA() *ecdsa.PublicKey {
 	return &ecdsa.PublicKey{
 		Curve: c,
-		X: new(big.Int).SetBytes(pubKey[1:33]),
-		Y: new(big.Int).SetBytes(pubKey[33:]),
+		X:     new(big.Int).SetBytes(pubKey[1:33]),
+		Y:     new(big.Int).SetBytes(pubKey[33:]),
 	}
 }
 

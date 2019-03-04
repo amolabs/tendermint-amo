@@ -30,6 +30,7 @@ const (
 var ABCIPubKeyTypesToAminoNames = map[string]string{
 	ABCIPubKeyTypeEd25519:   ed25519.PubKeyAminoName,
 	ABCIPubKeyTypeSecp256k1: secp256k1.PubKeyAminoName,
+	ABCIPubKeyTypeP256:      p256.PubKeyAminoName,
 }
 
 //-------------------------------------------------------
@@ -209,6 +210,14 @@ func (pb2tm) PubKey(pubKey abci.PubKey) (crypto.PubKey, error) {
 				len(pubKey.Data), secp256k1.PubKeySecp256k1Size)
 		}
 		var pk secp256k1.PubKeySecp256k1
+		copy(pk[:], pubKey.Data)
+		return pk, nil
+	case ABCIPubKeyTypeP256:
+		if len(pubKey.Data) != p256.PubKeyP256Size {
+			return nil, fmt.Errorf("Invalid size for P256. Got %d, expected %d",
+				len(pubKey.Data), p256.PubKeyP256Size)
+		}
+		var pk p256.PubKeyP256
 		copy(pk[:], pubKey.Data)
 		return pk, nil
 	default:
