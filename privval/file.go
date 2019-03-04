@@ -4,11 +4,11 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"github.com/amolabs/tendermint-amo/crypto/p256"
 	"io/ioutil"
 	"time"
 
 	"github.com/amolabs/tendermint-amo/crypto"
+	"github.com/amolabs/tendermint-amo/crypto/ed25519"
 	cmn "github.com/amolabs/tendermint-amo/libs/common"
 	"github.com/amolabs/tendermint-amo/types"
 	tmtime "github.com/amolabs/tendermint-amo/types/time"
@@ -143,7 +143,7 @@ type FilePV struct {
 // GenFilePV generates a new validator with randomly generated private key
 // and sets the filePaths, but does not call Save().
 func GenFilePV(keyFilePath, stateFilePath string) *FilePV {
-	privKey := p256.GenPrivKey()
+	privKey := ed25519.GenPrivKey()
 
 	return &FilePV{
 		Key: FilePVKey{

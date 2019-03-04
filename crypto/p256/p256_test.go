@@ -1,23 +1,27 @@
 package p256
 
 import (
-	"encoding/hex"
-	"github.com/stretchr/testify/require"
 	"testing"
+
+	"github.com/amolabs/tendermint-amo/crypto"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
-func TestGenPrivKey(t *testing.T) {
-	r := require.New(t)
-	privKey := PrivKeyP256{}
-	privKeyBytes, _ := hex.DecodeString("CDDB6810F12C7713B97D685316EE56086C463449E03BBB6A256CC6547B342A70")
-	privKey.SetBytes(privKeyBytes)
+func TestSignAndVerifyP256(t *testing.T) {
+	privKey := GenPrivKey()
 	pubKey := privKey.PubKey()
-	pubKeyBytes, _ := hex.DecodeString("047E10BF3D00C47403FD73AAAAA46B9CF9E680A80E259658E5FA0699FA3658F712ED4025E469F3CD0E9B872DBCA44158A450A04CAEA48005B52C541EAD92FCF581")
-	r.Equal(pubKey.Bytes(), pubKeyBytes)
-	msg := []byte("aaa")
+
+	msg := crypto.CRandBytes(128)
 	sig, err := privKey.Sign(msg)
-	if err != nil {
-		t.Fatal(err)
-	}
-	r.True(pubKey.VerifyBytes(msg, sig))
+	require.Nil(t, err)
+
+	// Test the signature
+	assert.True(t, pubKey.VerifyBytes(msg, sig))
+
+	// Mutate the signature, just one bit.
+	// TODO: Replace this with a much better fuzzer, tendermint/ed25519/issues/10
+	sig[7] ^= byte(0x01)
+
+	assert.False(t, pubKey.VerifyBytes(msg, sig))
 }

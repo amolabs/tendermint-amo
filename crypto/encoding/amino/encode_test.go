@@ -1,13 +1,13 @@
 package cryptoAmino
 
 import (
-	"github.com/amolabs/tendermint-amo/crypto/p256"
 	"os"
 	"testing"
 
 	"github.com/amolabs/tendermint-amo/crypto"
 	"github.com/amolabs/tendermint-amo/crypto/ed25519"
 	"github.com/amolabs/tendermint-amo/crypto/multisig"
+	"github.com/amolabs/tendermint-amo/crypto/p256"
 	"github.com/amolabs/tendermint-amo/crypto/secp256k1"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
