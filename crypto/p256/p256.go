@@ -5,8 +5,11 @@ import (
 	"crypto/ecdsa"
 	"crypto/elliptic"
 	"encoding/hex"
+	"encoding/json"
+	"github.com/amolabs/tendermint-amo/libs/common"
 	"io"
 	"math/big"
+	"strings"
 
 	amino "github.com/tendermint/go-amino"
 
@@ -64,7 +67,7 @@ func genPrivKey(rand io.Reader) PrivKeyP256 {
 }
 
 func (privKey PrivKeyP256) Bytes() []byte {
-	return cdc.MustMarshalBinaryBare(privKey)
+	return privKey[:]
 }
 
 func (privKey PrivKeyP256) ToECDSA() *ecdsa.PrivateKey {
@@ -111,7 +114,26 @@ func (privKey *PrivKeyP256) SetBytes(buf []byte) {
 }
 
 func (privKey PrivKeyP256) String() string {
-	return hex.EncodeToString(privKey[:])
+	return strings.ToUpper(hex.EncodeToString(privKey[:]))
+}
+
+func (privKey PrivKeyP256) MarshalJSON() ([]byte, error) {
+	data := make([]byte, len(privKey)*2+2)
+	data[0] = '"'
+	data[len(data)-1] = '"'
+	copy(data[1:], privKey.String())
+	return data, nil
+}
+
+func (privKey *PrivKeyP256) UnmarshalJSON(data []byte) error {
+	if len(data) != PrivKeyP256Size*2 + 2 {
+		return common.NewError("Invalid private key format")
+	}
+	_, err := hex.Decode(privKey[:], data[1:len(data)-1])
+	if err != nil {
+		panic(err)
+	}
+	return nil
 }
 
 func (pubKey PubKeyP256) Address() tmc.Address {
@@ -119,7 +141,7 @@ func (pubKey PubKeyP256) Address() tmc.Address {
 }
 
 func (pubKey PubKeyP256) Bytes() []byte {
-	return cdc.MustMarshalBinaryBare(pubKey)
+	return pubKey[:]
 }
 
 func (pubKey PubKeyP256) ToECDSA() *ecdsa.PublicKey {
@@ -142,8 +164,31 @@ func (pubKey PubKeyP256) Equals(other tmc.PubKey) bool {
 }
 
 func (pubKey PubKeyP256) String() string {
-	return hex.EncodeToString(pubKey[:])
+	return strings.ToUpper(hex.EncodeToString(pubKey[:]))
+}
+
+func (pubKey PubKeyP256) MarshalJSON() ([]byte, error) {
+	data := make([]byte, len(pubKey)*2+2)
+	data[0] = '"'
+	data[len(data)-1] = '"'
+	copy(data[1:], pubKey.String())
+	return data, nil
+}
+
+func (pubKey *PubKeyP256) UnmarshalJSON(data []byte) error {
+	if len(data) != PubKeyP256Size*2 + 2 {
+		return common.NewError("Invalid public key format")
+	}
+ 	_, err := hex.Decode(pubKey[:], data[1:len(data)-1])
+ 	if err != nil {
+ 		panic(err)
+	}
+ 	return nil
 }
 
 var _ tmc.PrivKey = PrivKeyP256{}
+var _ json.Marshaler = (*PrivKeyP256)(nil)
+var _ json.Unmarshaler = (*PrivKeyP256)(nil)
 var _ tmc.PubKey = PubKeyP256{}
+var _ json.Marshaler = (*PubKeyP256)(nil)
+var _ json.Unmarshaler = (*PubKeyP256)(nil)
