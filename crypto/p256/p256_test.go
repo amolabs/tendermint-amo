@@ -1,6 +1,8 @@
 package p256
 
 import (
+	"encoding/json"
+	"fmt"
 	"testing"
 
 	"github.com/amolabs/tendermint-amo/crypto"
@@ -24,4 +26,25 @@ func TestSignAndVerifyP256(t *testing.T) {
 	sig[7] ^= byte(0x01)
 
 	assert.False(t, pubKey.VerifyBytes(msg, sig))
+}
+
+func TestP256JSON(t *testing.T) {
+	privKey := GenPrivKey()
+	pubKey := privKey.PubKey()
+
+	bPrivKey, err := json.Marshal(privKey)
+	require.Nil(t, err)
+	assert.Equal(t, fmt.Sprintf("\"%s\"", privKey), string(bPrivKey))
+	var RprivKey PrivKeyP256
+	err = json.Unmarshal(bPrivKey, &RprivKey)
+	require.Nil(t, err)
+	assert.True(t, privKey.Equals(RprivKey))
+
+	bPubKey, err := json.Marshal(pubKey)
+	require.Nil(t, err)
+	assert.Equal(t, fmt.Sprintf("\"%s\"", pubKey), string(bPubKey))
+	var RpubKey PubKeyP256
+	err = json.Unmarshal(bPubKey, &RpubKey)
+	require.Nil(t, err)
+	assert.True(t, pubKey.Equals(RpubKey))
 }
