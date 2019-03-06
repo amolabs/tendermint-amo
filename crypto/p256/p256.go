@@ -6,7 +6,6 @@ import (
 	"crypto/elliptic"
 	"encoding/hex"
 	"encoding/json"
-	"github.com/amolabs/tendermint-amo/libs/common"
 	"io"
 	"math/big"
 	"strings"
@@ -15,6 +14,7 @@ import (
 
 	tmc "github.com/amolabs/tendermint-amo/crypto"
 	"github.com/amolabs/tendermint-amo/crypto/tmhash"
+	cmn "github.com/amolabs/tendermint-amo/libs/common"
 )
 
 var (
@@ -67,6 +67,10 @@ func genPrivKey(rand io.Reader) PrivKeyP256 {
 }
 
 func (privKey PrivKeyP256) Bytes() []byte {
+	return cdc.MustMarshalBinaryBare(privKey)
+}
+
+func (privKey PrivKeyP256) RawBytes() []byte {
 	return privKey[:]
 }
 
@@ -106,7 +110,7 @@ func (privKey PrivKeyP256) PubKey() tmc.PubKey {
 }
 
 func (privKey PrivKeyP256) Equals(other tmc.PrivKey) bool {
-	return bytes.Equal(privKey[:], other.Bytes())
+	return bytes.Equal(privKey.Bytes(), other.Bytes())
 }
 
 func (privKey *PrivKeyP256) SetBytes(buf []byte) {
@@ -127,7 +131,7 @@ func (privKey PrivKeyP256) MarshalJSON() ([]byte, error) {
 
 func (privKey *PrivKeyP256) UnmarshalJSON(data []byte) error {
 	if len(data) != PrivKeyP256Size*2 + 2 {
-		return common.NewError("Invalid private key format")
+		return cmn.NewError("Invalid private key format")
 	}
 	_, err := hex.Decode(privKey[:], data[1:len(data)-1])
 	if err != nil {
@@ -141,6 +145,10 @@ func (pubKey PubKeyP256) Address() tmc.Address {
 }
 
 func (pubKey PubKeyP256) Bytes() []byte {
+	return cdc.MustMarshalBinaryBare(pubKey)
+}
+
+func (pubKey PubKeyP256) RawBytes() []byte {
 	return pubKey[:]
 }
 
@@ -160,7 +168,7 @@ func (pubKey PubKeyP256) VerifyBytes(msg []byte, sig []byte) bool {
 }
 
 func (pubKey PubKeyP256) Equals(other tmc.PubKey) bool {
-	return bytes.Equal(pubKey[:], other.Bytes())
+	return bytes.Equal(pubKey.Bytes(), other.Bytes())
 }
 
 func (pubKey PubKeyP256) String() string {
@@ -177,7 +185,7 @@ func (pubKey PubKeyP256) MarshalJSON() ([]byte, error) {
 
 func (pubKey *PubKeyP256) UnmarshalJSON(data []byte) error {
 	if len(data) != PubKeyP256Size*2 + 2 {
-		return common.NewError("Invalid public key format")
+		return cmn.NewError("Invalid public key format")
 	}
  	_, err := hex.Decode(pubKey[:], data[1:len(data)-1])
  	if err != nil {
